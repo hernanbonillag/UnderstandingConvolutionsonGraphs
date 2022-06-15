@@ -13,13 +13,13 @@ En este punto es dónde entran las redes neuronales gráficas las cuales se dest
 Ahora bien 
 
 ## Los desafíos de la computación en grafos.
-###Falta de estructura consistente
+#Falta de estructura consistente
 
 ![moleculas](https://user-images.githubusercontent.com/65386838/173958401-3b87fccd-e293-4ae3-90c6-40adcbbceb38.PNG)
 
-###Equivarianza de orden del nodo
+#Equivarianza de orden del nodo
 
-###Escalabilidad
+#Escalabilidad
 
 ##Resolución de problemas y notación.
 
@@ -27,39 +27,39 @@ Ahora bien
 
 ##Filtros polinómicos en grafos.
 
-###El grafo laplaciano.
+#El grafo laplaciano.
 
-###Polinomios del Laplaciano.
+#Polinomios del Laplaciano.
 
-###ChebNet
-###Los filtros polinómicos son equivalentes al orden de los nodos.
+#ChebNet
+#Los filtros polinómicos son equivalentes al orden de los nodos.
 
-###Computación embebida.
+#Computación embebida.
 
 ##Redes neuronales gráficas modernas
 
-###Computación embebida.
+#Computación embebida.
 
 ##Redes neuronales gráficas interactivas.
 
 ##De circunvoluciones locales a globales.
 
-###Convoluciones espectrales.
+#Convoluciones espectrales.
 
-###Representaciones espectrales de imágenes naturales.
+#Representaciones espectrales de imágenes naturales.
 
-###Computación embebida.
+#Computación embebida.
 
-###Las circunvoluciones espectrales son equivalentes al orden de los nodos.
+#Las circunvoluciones espectrales son equivalentes al orden de los nodos.
 
-###Propagación global a través de grafos embebidos.
+#Propagación global a través de grafos embebidos.
 
 ##Aprendizaje de parámetros GNN.
 
 ##Conclusión y lecturas adicionales.
-###GNNs en Práctica.
-###Different Kinds of Graphs
-###puesta en común
+#GNNs en Práctica.
+#Different Kinds of Graphs
+#puesta en común
 ##Referencias.
 
 
