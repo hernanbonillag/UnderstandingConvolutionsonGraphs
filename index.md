@@ -19,19 +19,36 @@ Ahora bien
 
 #Equivarianza de orden del nodo
 
+![graphsDistill](https://user-images.githubusercontent.com/65386838/173960157-a0ecdbc3-b987-494c-804e-08e3671ac07f.PNG)
+
+
 #Escalabilidad
 
 ##Resolución de problemas y notación.
 
+![part1Graph](https://user-images.githubusercontent.com/65386838/173960290-a19e17bb-050b-47f1-a0e2-701a30f46012.PNG)
+![part2Graph](https://user-images.githubusercontent.com/65386838/173960295-4bd026b0-5c86-449c-907f-3eaccd853376.PNG)
+
+
 ##Extendiendo circunvoluciones a grafos.
 
-##Filtros polinómicos en grafos.
+![ConvinCNS](https://user-images.githubusercontent.com/65386838/173960385-8972ebc1-f7ba-450e-9a1f-88ce7bc771a0.PNG)
 
+
+##Filtros polinómicos en grafos.
 #El grafo laplaciano.
+![Eq1](https://user-images.githubusercontent.com/65386838/173960579-72dc0528-c6b8-46c6-b6d0-6576b459df49.PNG)
+![LaplacianLoG](https://user-images.githubusercontent.com/65386838/173960589-937d782e-7f43-42a9-bf05-2fdc40ade6a2.PNG)
 
 #Polinomios del Laplaciano.
 
+![eq2](https://user-images.githubusercontent.com/65386838/173960742-a75e7b61-6c47-46b0-8848-e3bf2741ab84.PNG)
+![Uploading Fixing.PNG…]()
+
+
 #ChebNet
+
+
 #Los filtros polinómicos son equivalentes al orden de los nodos.
 
 #Computación embebida.
