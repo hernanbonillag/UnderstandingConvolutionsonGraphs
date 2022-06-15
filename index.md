@@ -4,7 +4,7 @@ Primeramente empezaremos por explicar lo que es un grafo para tener un mejor ent
 
 
 
-### Segunda sección
+## Los desafíos de la computación en gráficos
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
@@ -15,10 +15,10 @@ Ejemplo de código en markdown
 
 
 
-### Tercera sección
+## Tercera sección
 Aqui irá la tercera sección
 
 
-### Cuarta sección
+## Cuarta sección
 <p align ="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/I3VPNJ2AcHc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
