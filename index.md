@@ -101,7 +101,11 @@ Las circunvoluciones en las CNN están inherentemente localizadas. Los vecinos q
 Comenzamos presentando la idea de construir filtros polinómicos sobre vecindarios de nodos, de forma muy similar a cómo las CNN calculan filtros localizados sobre píxeles vecinos. Luego, veremos cómo enfoques más recientes amplían esta idea con mecanismos más potentes. Finalmente, discutiremos métodos alternativos que pueden usar información de nivel de gráfico "global" para calcular representaciones de nodos.
 ### El grafo laplaciano.
 Dado un gráfico G, fijemos un orden arbitrario de los n nodos de G. Denotamos la matriz de adyacencia 0−1 de G por A, podemos construir la matriz de grado diagonal D de G como:
+
+
 ![Eq1](https://user-images.githubusercontent.com/65386838/173960579-72dc0528-c6b8-46c6-b6d0-6576b459df49.PNG)
+
+
 donde A_vu denota la entrada en la fila correspondiente a v y la columna correspondiente a uu en la matriz A. Usaremos esta notación a lo largo de esta sección.
 
 Entonces, el grafo laplaciano L es la matriz cuadrada n×n definida como: L = D - A.
