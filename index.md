@@ -68,10 +68,26 @@ Hay muchos problemas útiles que se pueden formular sobre gráficos:
 Un precursor común para resolver muchos de estos problemas es el aprendizaje de representación de nodos: aprender a asignar nodos individuales a vectores de valores reales de tamaño fijo (llamados "representaciones" o "incrustaciones").
 
 En Aprendizaje de parámetros GNN (Se explican más adelante), veremos cómo se pueden utilizar las incrustaciones aprendidas para estas tareas.
-Las diferentes variantes de GNN se distinguen por la forma en que se calculan estas representaciones. Sin embargo, en general, las GNN calculan las representaciones de los nodos en un proceso iterativo. Usaremos la notación ![hsubvk](https://user-images.githubusercontent.com/65386838/174001928-f834050e-c3c4-4e3e-bb7b-c5fbe2bfd88d.PNG)
+Las diferentes variantes de GNN se distinguen por la forma en que se calculan estas representaciones. Sin embargo, en general, las GNN calculan las representaciones de los nodos en un proceso iterativo. Usaremos la notación ![hsubvk](https://user-images.githubusercontent.com/65386838/174001928-f834050e-c3c4-4e3e-bb7b-c5fbe2bfd88d.PNG) para indicar la representación del nodo v después de la k iteración. Cada iteración se puede considerar como el equivalente de una "capa" en las redes neuronales estándar.
+
+Definiremos un grafo G como un conjunto de nodos, V, con un conjunto de aristas E que los conectan. Los nodos pueden tener características individuales como parte de la entrada: lo denotaremos por x_v la característica individual para el nodo v∈V. Por ejemplo, las "características del nodo" para un píxel en una imagen en color serían los valores de los canales rojo, verde y azul (RGB) en ese píxel.
+
+Para facilitar la exposición, supondremos que G no está dirigido y que todos los nodos son del mismo tipo. Este tipo de gráficos se denominan "homogéneos". Muchas de las mismas ideas que veremos aquí se aplican a otros tipos de gráficos: discutiremos esto más adelante en Diferentes tipos de gráficos.
+
+A veces necesitaremos denotar una propiedad de gráfico mediante una matriz M, donde cada fila M_v
+
+representa una propiedad correspondiente a un vértice particular v.
 
 
 ## Extendiendo circunvoluciones a grafos.
+
+Ahora retomaremos el concepto de red neuronal Las redes neuronales convolucionales surgen del estudio de la corteza visual en gatos realizado por David H. Hubel y Torsten Wiesel. Estos autores demostraron que existen grupos de neuronas en la corteza visual que tienen un campo receptivo local. Un campo receptivo se define como una región limitada del espacio en la que un grupo de neuronas reaccionan en función a un estímulo. [2]
+Se puede ver el siguiente video como apoyo.
+<p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/mgaUjJ-430Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+
+Se ha visto que las redes neuronales convolucionales son bastante poderosas para extraer características de las imágenes. Sin embargo, las imágenes en sí pueden verse como gráficos con una estructura similar a una cuadrícula muy regular, donde los píxeles individuales son nodos y los valores del canal RGB en cada píxel son las características del nodo.
+
+Una idea natural, entonces, es considerar la generalización de convoluciones a grafos arbitrarios. Sin embargo, recuerde los desafíos enumerados en la sección anterior: en particular, las circunvoluciones ordinarias no son invariantes en el orden de los nodos, ya que dependen de las posiciones absolutas de los píxeles. Inicialmente, no está claro cómo generalizar convoluciones sobre cuadrículas a convoluciones sobre gráficos generales, donde la estructura de vecindad difiere de un nodo a otro. El lector curioso puede preguntarse si se podría realizar algún tipo de relleno y ordenamiento para garantizar la consistencia de la estructura de vecindad entre los nodos. Esto se ha intentado con cierto éxito, pero las técnicas que veremos aquí son más generales y poderosas.
 
 ![ConvinCNS](https://user-images.githubusercontent.com/65386838/173960385-8972ebc1-f7ba-450e-9a1f-88ce7bc771a0.PNG)
 
