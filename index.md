@@ -55,9 +55,22 @@ Como resultado, nos gustaría que nuestros algoritmos fueran equivalentes al ord
 Afortunadamente, la mayoría de los gráficos que ocurren naturalmente son "escasos": tienden a tener un número de aristas lineal en su número de vértices. Veremos que esto permite el uso de métodos inteligentes para calcular de manera eficiente las representaciones de los nodos dentro del gráfico. Además, los métodos que analizamos aquí tendrán significativamente menos parámetros en comparación con el tamaño de los gráficos en los que operan.
 
 ## Resolución de problemas y notación.
+Hay muchos problemas útiles que se pueden formular sobre gráficos:
 
+* __Clasificación de nodos__: clasificación de nodos individuales.
+* __Clasificación de grafos__ : clasificación de gráficos completos.
+* __Agrupación de nodos__ : agrupación de nodos similares en función de la conectividad.
+* __Predicción de enlaces__ : predicción de enlaces perdidos.
+* __Maximización de influencia__ : identificación de nodos influyentes.
 ![part1Graph](https://user-images.githubusercontent.com/65386838/173960290-a19e17bb-050b-47f1-a0e2-701a30f46012.PNG)
 ![part2Graph](https://user-images.githubusercontent.com/65386838/173960295-4bd026b0-5c86-449c-907f-3eaccd853376.PNG)
+
+Un precursor común para resolver muchos de estos problemas es el aprendizaje de representación de nodos: aprender a asignar nodos individuales a vectores de valores reales de tamaño fijo (llamados "representaciones" o "incrustaciones").
+
+En Aprendizaje de parámetros GNN (Se explican más adelante), veremos cómo se pueden utilizar las incrustaciones aprendidas para estas tareas.
+Las diferentes variantes de GNN se distinguen por la forma en que se calculan estas representaciones. Sin embargo, en general, las GNN calculan las representaciones de los nodos en un proceso iterativo. Usaremos la notación 
+
+\sum_{n=1}^{N}n^{-s}
 
 
 ## Extendiendo circunvoluciones a grafos.
