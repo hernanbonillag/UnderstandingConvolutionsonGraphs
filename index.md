@@ -114,8 +114,18 @@ El laplaciano L para un grafo no dirigido G, con la fila correspondiente al nodo
 
 ### ChebNet
 
+ChebNet refina esta idea de filtros polinómicos observando filtros polinómicos de la forma:
+
 ![eqcheb](https://user-images.githubusercontent.com/65386838/173961575-d0611f9f-5371-4ddb-8c10-cea60eeb5851.PNG)
+
+donde T_i es el polinomio de Chebyshev de grado ii del primer tipo y L^~ es el laplaciano normalizado definido usando el valor propio más grande de L: Discutimos los valores propios del laplaciano L con más detalle en una sección posterior.
+
 ![eqcheb2](https://user-images.githubusercontent.com/65386838/173961582-5eb0f1e4-2f5a-4778-a7b3-1fffec4c4e0c.PNG)
+
+¿Cuál es la motivación detrás de estas elecciones?
+
+L es en realidad semidefinida positiva: todos los valores propios de L no son menores que 0. Si λmax(L)>1, las entradas en las potencias de L aumentan rápidamente de tamaño. L^~ es efectivamente una versión reducida de L, con valores propios garantizados en el rango [-1, 1]. Esto evita que las entradas de potencias de L^~ exploten. De hecho, en la visualización anterior: restringimos los coeficientes de orden superior cuando se selecciona el Laplaciano LL no normalizado, pero permitimos valores más grandes cuando se selecciona el Laplaciano L^~ normalizado, para mostrar el resultado x’ en la misma escala de color.
+Los polinomios de Chebyshev tienen ciertas propiedades interesantes que hacen que la interpolación sea numéricamente más estable. No hablaremos de esto con más profundidad aquí, pero recomendaremos a los lectores interesados que le echen un vistazo como un recurso definitivo.
 
 
 ### Los filtros polinómicos son equivalentes al orden de los nodos.
@@ -125,7 +135,11 @@ video
 ### Computación embebida.
 La computación embebida o incrustrada es una asignación de una variable categórica discreta a un vector de números continuos. En el contexto de las redes neuronales, las incrustaciones son representaciones vectoriales continúas aprendidas de baja dimensión de variables discretas. Las incrustaciones de redes neuronales son útiles porque pueden reducir la dimensionalidad de las variables categóricas y representar categorías de manera significativa en el espacio transformado.
 Ahora describimos cómo podemos construir una red neuronal gráfica apilando capas de ChebNet (o cualquier filtro polinomial) una tras otra con no linealidades, como una CNN estándar. En particular, si tenemos K capas de filtros polinómicos diferentes, la k^th de las cuales tiene sus propios pesos aprendibles w^k, realizaríamos el siguiente cálculo:
+
+
 ![embebida1](https://user-images.githubusercontent.com/65386838/173961623-ef20b755-533f-48a4-a009-409b0ef54ba3.PNG)
+
+
 Tenga en cuenta que estas redes reutilizan los mismos pesos de filtro en diferentes nodos, imitando exactamente el peso compartido en las redes neuronales convolucionales (CNN) que reutilizan pesos para filtros convolucionales en una cuadrícula.
 
 
@@ -167,7 +181,9 @@ Asumiendo características de nodos unidimensionales por ahora, la salida de cad
 
 Fijamos un ordenamiento de los nodos en G. Esto nos da la matriz de adyacencia A y el gráfico laplaciano L, lo que nos permite calcular U_m. Finalmente, podemos describir el cálculo que realizan las capas, una tras otra:
 
-El método anterior se generaliza fácilmente para el caso en que cada h^{(k)} \in {R}^{d_k} también:
+El método anterior se generaliza fácilmente para el caso en que cada h^(k) en  R^d_ktambién:
+
+
 ![embebida3](https://user-images.githubusercontent.com/65386838/173962058-be9683f5-5ee7-4af8-8b24-6b2212593238.PNG)
 
 Con las ideas de la sección anterior, vemos que la convolución en el dominio espectral de los gráficos se puede considerar como la generalización de la convolución en el dominio de la frecuencia de las imágenes.
@@ -185,14 +201,26 @@ Una forma más sencilla de incorporar información a nivel de gráfico es calcul
 
 Todos los cálculos de incrustación que hemos descrito aquí, ya sean espectrales o espaciales, son completamente diferenciables. Esto permite que las GNN se entrenen de un extremo a otro, al igual que una red neuronal estándar, una vez que se define una función de pérdida L adecuada:
 * __Clasificación del Nodo__: Al minimizar cualquiera de las pérdidas estándar para las tareas de clasificación, como la entropía cruzada categórica cuando hay varias clases presentes:
+
+
 ![Leq1](https://user-images.githubusercontent.com/65386838/173962358-d5b85127-d910-4173-9b4c-3c2356249e90.PNG)
+
+
 donde y_vc es la probabilidad prevista de que el nodo v esté en la clase c. Los GNN se adaptan bien a la configuración semisupervisada, que es cuando solo se etiquetan algunos nodos en el gráfico. En este escenario, una forma de definir una pérdida LG
 sobre un gráfico de entrada G es:
+
+
 ![Leq2](https://user-images.githubusercontent.com/65386838/173962364-688b11e0-b42e-464e-8c60-dc29a761709d.PNG)
+
+
 donde, solo calculamos las pérdidas sobre los nodos etiquetados Lab(G).
 * __Clasificación de grafos__: al agregar representaciones de nodos, se puede construir una representación vectorial de todo el gráfico. Esta representación gráfica se puede utilizar para cualquier tarea a nivel de gráfico, incluso más allá de la clasificación. Consulte Agrupación para ver cómo se pueden construir las representaciones de gráficos.
 * __Predicción de enlaces__: al muestrear pares de nodos adyacentes y no adyacentes, y usar estos pares de vectores como entradas para predecir la presencia/ausencia de un borde. Para un ejemplo concreto, al minimizar la siguiente pérdida similar a la 'regresión logística':
+
+
 ![Leq3](https://user-images.githubusercontent.com/65386838/173962371-3de4e2f9-2136-498e-a8f7-0b76a776c83b.PNG)
+
+
 donde σ es la función sigmoidea y e_vu = 1
 si f existe una arista entre los nodos vv y uu, siendo 00 en caso contrario.
 
@@ -202,6 +230,8 @@ El amplio éxito del entrenamiento previo para modelos de procesamiento de lengu
 Otra técnica autosupervisada es hacer cumplir que los nodos vecinos obtengan incrustaciones similares, imitando enfoques de caminata aleatoria como node2vec y DeepWalk:
 
 ![Leq4](https://user-images.githubusercontent.com/65386838/173962380-3f3b68a7-3313-42f4-a673-e4d879960eee.PNG)
+
+
 donde N_R(v) es un conjunto múltiple de nodos visitados cuando se inician caminatas aleatorias desde vv. Para gráficos grandes, donde calcular la suma de todos los nodos puede ser costoso desde el punto de vista computacional, las técnicas como la Estimación de contraste de ruido son especialmente útiles.
 
 ## Conclusión y lecturas adicionales.
@@ -213,7 +243,9 @@ Terminamos con sugerencias y referencias para conceptos adicionales que podrían
 ### GNNs en Práctica.
 Resulta que acomodar las diferentes estructuras de los gráficos a menudo es difícil de hacer de manera eficiente, pero aún podemos representar muchas ecuaciones de actualización de GNN utilizando productos de vectores de matriz dispersos (ya que, en general, la matriz de adyacencia es escasa para la mayoría de los conjuntos de datos de gráficos del mundo real). ) Por ejemplo, la variante GCN discutida aquí se puede representar como:
 
+
 ![GNNpractice](https://user-images.githubusercontent.com/65386838/174019364-e6a3465c-0897-4190-83db-7495c169981a.PNG)
+
 
 La reestructuración de las ecuaciones de actualización de esta manera permite implementaciones vectorizadas eficientes de GNN en aceleradores como GPU.
 
@@ -235,7 +267,9 @@ Este artículo analiza cómo las GNN calculan representaciones útiles de nodos.
 
 Una solución simple es simplemente agregar las incrustaciones de nodos finales y pasarlas a través de otra red neuronal PREDICT G:
 
+
 ![Pooling](https://user-images.githubusercontent.com/65386838/173962541-5b0aac1a-f602-4449-a818-a3a6940fb752.PNG)
+
 
 Sin embargo, existen técnicas más poderosas para 'agrupar' representaciones de nodos:
 
