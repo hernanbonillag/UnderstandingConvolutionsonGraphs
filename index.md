@@ -124,7 +124,7 @@ video
 
 ### Computación embebida.
 La computación embebida o incrustrada es una asignación de una variable categórica discreta a un vector de números continuos. En el contexto de las redes neuronales, las incrustaciones son representaciones vectoriales continúas aprendidas de baja dimensión de variables discretas. Las incrustaciones de redes neuronales son útiles porque pueden reducir la dimensionalidad de las variables categóricas y representar categorías de manera significativa en el espacio transformado.
-Ahora describimos cómo podemos construir una red neuronal gráfica apilando capas de ChebNet (o cualquier filtro polinomial) una tras otra con no linealidades, como una CNN estándar. En particular, si tenemos K capas de filtros polinómicos diferentes, la k^{th} de las cuales tiene sus propios pesos aprendibles w^{k}, realizaríamos el siguiente cálculo:
+Ahora describimos cómo podemos construir una red neuronal gráfica apilando capas de ChebNet (o cualquier filtro polinomial) una tras otra con no linealidades, como una CNN estándar. En particular, si tenemos K capas de filtros polinómicos diferentes, la k^th de las cuales tiene sus propios pesos aprendibles w^k, realizaríamos el siguiente cálculo:
 ![embebida1](https://user-images.githubusercontent.com/65386838/173961623-ef20b755-533f-48a4-a009-409b0ef54ba3.PNG)
 Tenga en cuenta que estas redes reutilizan los mismos pesos de filtro en diferentes nodos, imitando exactamente el peso compartido en las redes neuronales convolucionales (CNN) que reutilizan pesos para filtros convolucionales en una cuadrícula.
 
@@ -141,6 +141,7 @@ El paso de mensajes forma la columna vertebral de muchas arquitecturas GNN en la
 - Redes de Atención Grafica (GAT)
 - Gráfico de muestra y agregado (GraphSAGE)
 - Red de isomorfismo gráfico (GIN)
+
 VIDEO
 
 ## Redes neuronales gráficas interactivas.
@@ -162,7 +163,7 @@ Como antes, el modelo que describimos a continuación tiene K capas: cada capa k
 
 Por lo tanto, la convolución en el dominio espectral permite el uso de significativamente menos parámetros que solo la convolución directa en el dominio natural. Además, en virtud de la suavidad de los vectores propios laplacianos en el gráfico, el uso de representaciones espectrales impone automáticamente un sesgo inductivo para que los nodos vecinos obtengan representaciones similares.
 
-Asumiendo características de nodos unidimensionales por ahora, la salida de cada capa es un vector de representaciones de nodos h^{(k)}, donde la representación de cada nodo corresponde a una fila del vector.
+Asumiendo características de nodos unidimensionales por ahora, la salida de cada capa es un vector de representaciones de nodos h^(k), donde la representación de cada nodo corresponde a una fila del vector.
 
 Fijamos un ordenamiento de los nodos en G. Esto nos da la matriz de adyacencia A y el gráfico laplaciano L, lo que nos permite calcular U_m. Finalmente, podemos describir el cálculo que realizan las capas, una tras otra:
 
@@ -185,7 +186,7 @@ Una forma más sencilla de incorporar información a nivel de gráfico es calcul
 Todos los cálculos de incrustación que hemos descrito aquí, ya sean espectrales o espaciales, son completamente diferenciables. Esto permite que las GNN se entrenen de un extremo a otro, al igual que una red neuronal estándar, una vez que se define una función de pérdida L adecuada:
 * __Clasificación del Nodo__: Al minimizar cualquiera de las pérdidas estándar para las tareas de clasificación, como la entropía cruzada categórica cuando hay varias clases presentes:
 ![Leq1](https://user-images.githubusercontent.com/65386838/173962358-d5b85127-d910-4173-9b4c-3c2356249e90.PNG)
-donde {y_{vc}} es la probabilidad prevista de que el nodo vv esté en la clase cc. Los GNN se adaptan bien a la configuración semisupervisada, que es cuando solo se etiquetan algunos nodos en el gráfico. En este escenario, una forma de definir una pérdida LG
+donde y_vc es la probabilidad prevista de que el nodo v esté en la clase c. Los GNN se adaptan bien a la configuración semisupervisada, que es cuando solo se etiquetan algunos nodos en el gráfico. En este escenario, una forma de definir una pérdida LG
 sobre un gráfico de entrada G es:
 ![Leq2](https://user-images.githubusercontent.com/65386838/173962364-688b11e0-b42e-464e-8c60-dc29a761709d.PNG)
 donde, solo calculamos las pérdidas sobre los nodos etiquetados Lab(G).
