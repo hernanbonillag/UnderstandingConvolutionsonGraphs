@@ -70,7 +70,7 @@ Un precursor común para resolver muchos de estos problemas es el aprendizaje de
 En Aprendizaje de parámetros GNN (Se explican más adelante), veremos cómo se pueden utilizar las incrustaciones aprendidas para estas tareas.
 Las diferentes variantes de GNN se distinguen por la forma en que se calculan estas representaciones. Sin embargo, en general, las GNN calculan las representaciones de los nodos en un proceso iterativo. Usaremos la notación 
 
-\sum_{n=1}^{N}n^{-s}
+$\sum_{n=1}^{N}n^{-s}$
 
 
 ## Extendiendo circunvoluciones a grafos.
