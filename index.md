@@ -11,13 +11,21 @@ Ahora que tenemos la noción acerca de lo que es un grafo podemos empezar a expl
 ## Redes Neuronales Gráficas o en Grafos(GNN)
 En este punto es dónde entran las redes neuronales gráficas las cuales se destacan porque pueden manejarse bien o operar de cierta forma con este tipo de datos estructurados al extraer y utilizar características del grafo subyacente.
 Ahora bien.
-Empezareos por definir que son las Redes Neuronales Gráficas o de Grafo, estás manejan entradas en una estructura de datos como son vectores, matrices o tensores, entonces estas aprovechas que  los dominios complejos al tener una rica estructura relacional, que se puede representar como un gráfico relacional, podemos obtener al modelar explícitamente las relaciones un mejor desempeño.
+Empezareos por definir que son las Redes Neuronales Gráficas o de Grafo, estás manejan entradas en una estructura de datos como son vectores, matrices o tensores, entonces aprovechan que  los dominios complejos al tener una rica estructura relacional que se puede representar como un grafo relacional se puede entonces obtener al modelar explícitamente las relaciones un mejor desempeño.
 
-Lo que hace la gran diferencia entre este tipo de redes neuronales y las "típica" por llamarlas de alguna forma es que al trabajar con este tipo de estructura no solo se analiza un número o información aíslada, si no que tambien se trabaja con las relaciones entre estos.
+Lo que hace la gran diferencia entre este tipo de redes neuronales y las "típicas" por llamarlas de alguna forma es que al trabajar con este tipo de estructura no solo se analiza información o números aíslados, si no que tambien se trabaja con las relaciones entre estos.
+
+Este tipo de redes neuronales cobran cada vez más fuerza al punto en que en su momento llegaron a desplazar a los metodos anteriores que se usaban para este tipo de información en grafos como lo son los núcleos de grafos y los métodos de caminata aleatoria.
+
+Para dar un poco de contexto, la caminata aleatoria o Random Walks por su nombre en ingles es un proceso el cual fué fructifero en diversas areas como son la física el cual se aplicó para saber la trayectoría seguida por una molécula que viaja a través de un líquido o un gas, las finanzas para determinar el precio de una acción fluctuante, en ecología  se emplea para modelar los movimientos de un animal de pastoreo y muchas otras más areas y aplicaciones, en teoría estos se basan en cadenas de Márkov o proceso de Márkov, pero su campo tambien abarca grafos finitos o bien rectas o planos.
+
+El objetivo que se presenta en este articulo es el poder explicar como surjen así como dar a conocer cuales son las variantes más populares actualmente.
 
 ## Los desafíos de la computación en grafos.
 <p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/X75vNB7lSGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 ### Falta de estructura consistente
+A lo primero que nos vamos a encontrar como un desafío en este campo es que se tiene una estructura incosistente, esto se refiere a que los grafos tienen tantas variedades en su estructura ya que puede haber unos con un pequeño número de nodos, pero por otra parte se puede tener uno con mucho más número de nodos por lo que esto dificulta su tratamiento, a continuación se explica con un ejemplo en moleculas.
+Para esto se va a considerar la tarea de predecir si una molécula química es tóxica o no.
 
 ![moleculas](https://user-images.githubusercontent.com/65386838/173958401-3b87fccd-e293-4ae3-90c6-40adcbbceb38.PNG)
 
