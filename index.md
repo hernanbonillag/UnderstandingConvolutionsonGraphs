@@ -91,11 +91,20 @@ Una idea natural, entonces, es considerar la generalización de convoluciones a 
 
 ![ConvinCNS](https://user-images.githubusercontent.com/65386838/173960385-8972ebc1-f7ba-450e-9a1f-88ce7bc771a0.PNG)
 
+Las circunvoluciones en las CNN están inherentemente localizadas. Los vecinos que participan en la convolución en el píxel central se resaltan en gris.
 
 ## Filtros polinómicos en grafos.
+Comenzamos presentando la idea de construir filtros polinómicos sobre vecindarios de nodos, de forma muy similar a cómo las CNN calculan filtros localizados sobre píxeles vecinos. Luego, veremos cómo enfoques más recientes amplían esta idea con mecanismos más potentes. Finalmente, discutiremos métodos alternativos que pueden usar información de nivel de gráfico "global" para calcular representaciones de nodos.
 ### El grafo laplaciano.
+Dado un gráfico G, fijemos un orden arbitrario de los n nodos de G. Denotamos la matriz de adyacencia 0−1 de G por A, podemos construir la matriz de grado diagonal D de G como:
 ![Eq1](https://user-images.githubusercontent.com/65386838/173960579-72dc0528-c6b8-46c6-b6d0-6576b459df49.PNG)
+donde A_vu denota la entrada en la fila correspondiente a v y la columna correspondiente a uu en la matriz A. Usaremos esta notación a lo largo de esta sección.
+
+Entonces, el grafo laplaciano L es la matriz cuadrada n×n definida como: L = D - A.
+
 ![LaplacianLoG](https://user-images.githubusercontent.com/65386838/173960589-937d782e-7f43-42a9-bf05-2fdc40ade6a2.PNG)
+
+El laplaciano L para un grafo no dirigido G, con la fila correspondiente al nodo C resaltada. Los ceros en L no se muestran arriba. El laplaciano L depende solo de la estructura del gráfico G, no de las características de los nodos.
 
 ### Polinomios del Laplaciano.
 
@@ -138,7 +147,7 @@ VIDEO
 
 video
 
-## De circunvoluciones locales a globales.
+## De convoluciones locales a globales.
 
 
 
@@ -165,16 +174,35 @@ Con las ideas de la sección anterior, vemos que la convolución en el dominio e
 ![embebida3-2](https://user-images.githubusercontent.com/65386838/173962069-e3c2c779-b43c-4535-a2b7-e53ce32625f2.PNG)
 
 
-### Las circunvoluciones espectrales son equivalentes al orden de los nodos.
+### Las convoluciones espectrales son equivalentes al orden de los nodos.
 video
 
 ### Propagación global a través de grafos embebidos.
+Una forma más sencilla de incorporar información a nivel de gráfico es calcular incrustaciones de todo el gráfico agrupando incrustaciones de nodos (y posiblemente bordes) y luego usar la incrustación de gráficos para actualizar las incrustaciones de nodos, siguiendo un esquema iterativo similar al que hemos visto aquí. . Este es un enfoque utilizado por Graph Networks. Discutiremos brevemente cómo se pueden construir incrustaciones a nivel de gráfico en Pooling. Sin embargo, tales enfoques tienden a ignorar la topología subyacente del gráfico que pueden capturar las convoluciones espectrales.
 
 ## Aprendizaje de parámetros GNN.
+
+Todos los cálculos de incrustación que hemos descrito aquí, ya sean espectrales o espaciales, son completamente diferenciables. Esto permite que las GNN se entrenen de un extremo a otro, al igual que una red neuronal estándar, una vez que se define una función de pérdida L adecuada:
+* __Clasificación del Nodo__: Al minimizar cualquiera de las pérdidas estándar para las tareas de clasificación, como la entropía cruzada categórica cuando hay varias clases presentes:
 ![Leq1](https://user-images.githubusercontent.com/65386838/173962358-d5b85127-d910-4173-9b4c-3c2356249e90.PNG)
+donde {y_{vc}} es la probabilidad prevista de que el nodo vv esté en la clase cc. Los GNN se adaptan bien a la configuración semisupervisada, que es cuando solo se etiquetan algunos nodos en el gráfico. En este escenario, una forma de definir una pérdida LG
+sobre un gráfico de entrada G es:
 ![Leq2](https://user-images.githubusercontent.com/65386838/173962364-688b11e0-b42e-464e-8c60-dc29a761709d.PNG)
+donde, solo calculamos las pérdidas sobre los nodos etiquetados Lab(G).
+* __Clasificación de grafos__: al agregar representaciones de nodos, se puede construir una representación vectorial de todo el gráfico. Esta representación gráfica se puede utilizar para cualquier tarea a nivel de gráfico, incluso más allá de la clasificación. Consulte Agrupación para ver cómo se pueden construir las representaciones de gráficos.
+* __Predicción de enlaces__: al muestrear pares de nodos adyacentes y no adyacentes, y usar estos pares de vectores como entradas para predecir la presencia/ausencia de un borde. Para un ejemplo concreto, al minimizar la siguiente pérdida similar a la 'regresión logística':
 ![Leq3](https://user-images.githubusercontent.com/65386838/173962371-3de4e2f9-2136-498e-a8f7-0b76a776c83b.PNG)
+donde σ es la función sigmoidea y e_vu = 1
+si f existe una arista entre los nodos vv y uu, siendo 00 en caso contrario.
+
+* __Agrupación de nodos__: simplemente agrupando las representaciones de nodos aprendidas.
+El amplio éxito del entrenamiento previo para modelos de procesamiento de lenguaje natural como ELMo y BERT ha despertado el interés en técnicas similares para GNN. La idea clave en cada uno de estos artículos es entrenar GNN para predecir propiedades gráficas locales (p. ej., grados de nodo, coeficiente de agrupamiento, atributos de nodo enmascarado) y/o globales (p. ej., distancias por pares, atributos globales enmascarados).
+
+Otra técnica autosupervisada es hacer cumplir que los nodos vecinos obtengan incrustaciones similares, imitando enfoques de caminata aleatoria como node2vec y DeepWalk:
+
 ![Leq4](https://user-images.githubusercontent.com/65386838/173962380-3f3b68a7-3313-42f4-a673-e4d879960eee.PNG)
+donde N_R(v) es un conjunto múltiple de nodos visitados cuando se inician caminatas aleatorias desde vv. Para gráficos grandes, donde calcular la suma de todos los nodos puede ser costoso desde el punto de vista computacional, las técnicas como la Estimación de contraste de ruido son especialmente útiles.
+
 ## Conclusión y lecturas adicionales.
 ### GNNs en Práctica.
 ### Diferentes tipos de Grafos.
@@ -182,9 +210,9 @@ video
 ![Pooling](https://user-images.githubusercontent.com/65386838/173962541-5b0aac1a-f602-4449-a818-a3a6940fb752.PNG)
 
 ## Referencias.
-Texto de referencia tomado: (https://distill.pub/2021/understanding-gnns/)
-[1] Zhou, J., Cui, G., Hu, S., Zhang, Z., Yang, C., Liu, Z., ... & Sun, M. (2020). Graph neural networks: A review of methods and applications. AI Open, 1, 57-81.
-[2] Cicero, I. E. (2018). Utilización de redes neuronales convoluciones para la detección de tipos de imágenes.
+* Texto de referencia tomado: (https://distill.pub/2021/understanding-gnns/)
+* [1] Zhou, J., Cui, G., Hu, S., Zhang, Z., Yang, C., Liu, Z., ... & Sun, M. (2020). Graph neural networks: A review of methods and applications. AI Open, 1, 57-81.
+* [2] Cicero, I. E. (2018). Utilización de redes neuronales convoluciones para la detección de tipos de imágenes.
 
 
 
