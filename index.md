@@ -130,7 +130,29 @@ Los polinomios de Chebyshev tienen ciertas propiedades interesantes que hacen qu
 
 ### Los filtros polinómicos son equivalentes al orden de los nodos.
 
-video
+Los filtros polinómicos que consideramos aquí son en realidad independientes del orden de los nodos. Esto es particularmente fácil de ver cuando el grado del polinomio p_w es 11: donde la característica de cada nodo se agrega con la suma de las características de su vecino. Claramente, esta suma no depende del orden de los vecinos. Se sigue una prueba similar para polinomios de mayor grado: las entradas en las potencias de L son equivalentes al orden de los nodos.
+
+__Details for the Interested Reader__
+
+Como arriba, supongamos un orden de nodo arbitrario sobre los n nodos de nuestro gráfico. Cualquier otro orden de nodos se puede considerar como una permutación de este orden de nodos original. Podemos representar cualquier permutación mediante una matriz de permutación __P__. __P__ siempre será una matriz ortogonal 0−1:
+
+![PT1](https://user-images.githubusercontent.com/65386838/174026199-090a28a8-d0bf-4014-bac6-2a7b896c8d53.PNG)
+
+Entonces, llamamos a un algoritmo _f_ equivalente de orden de nodo si para todas las permutaciones __P__:
+
+![PT2](https://user-images.githubusercontent.com/65386838/174026365-b1421ac1-905c-4b7f-be99-a5be429f5dca.PNG)
+
+Al cambiar al nuevo orden de nodos usando la permutación __P__, las cantidades a continuación se transforman de la siguiente manera:
+
+![PT3](https://user-images.githubusercontent.com/65386838/174026469-32eacf0f-08e0-4bff-9ec1-780a9bdd2f0e.PNG)
+
+
+y así, para el caso de los filtros polinómicos, podemos ver que:
+
+![PT4](https://user-images.githubusercontent.com/65386838/174026560-e8f4a4e9-f098-4e4d-b06b-cd1ee417ef42.PNG)
+
+según sea necesario.
+
 
 ### Computación embebida.
 La computación embebida o incrustrada es una asignación de una variable categórica discreta a un vector de números continuos. En el contexto de las redes neuronales, las incrustaciones son representaciones vectoriales continúas aprendidas de baja dimensión de variables discretas. Las incrustaciones de redes neuronales son útiles porque pueden reducir la dimensionalidad de las variables categóricas y representar categorías de manera significativa en el espacio transformado.
