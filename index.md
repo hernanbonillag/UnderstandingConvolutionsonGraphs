@@ -68,9 +68,7 @@ Hay muchos problemas útiles que se pueden formular sobre gráficos:
 Un precursor común para resolver muchos de estos problemas es el aprendizaje de representación de nodos: aprender a asignar nodos individuales a vectores de valores reales de tamaño fijo (llamados "representaciones" o "incrustaciones").
 
 En Aprendizaje de parámetros GNN (Se explican más adelante), veremos cómo se pueden utilizar las incrustaciones aprendidas para estas tareas.
-Las diferentes variantes de GNN se distinguen por la forma en que se calculan estas representaciones. Sin embargo, en general, las GNN calculan las representaciones de los nodos en un proceso iterativo. Usaremos la notación 
-
-$\sum_{n=1}^{N}n^{-s}$
+Las diferentes variantes de GNN se distinguen por la forma en que se calculan estas representaciones. Sin embargo, en general, las GNN calculan las representaciones de los nodos en un proceso iterativo. Usaremos la notación ![hsubvk](https://user-images.githubusercontent.com/65386838/174001928-f834050e-c3c4-4e3e-bb7b-c5fbe2bfd88d.PNG)
 
 
 ## Extendiendo circunvoluciones a grafos.
