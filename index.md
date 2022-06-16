@@ -204,10 +204,43 @@ Otra técnica autosupervisada es hacer cumplir que los nodos vecinos obtengan in
 donde N_R(v) es un conjunto múltiple de nodos visitados cuando se inician caminatas aleatorias desde vv. Para gráficos grandes, donde calcular la suma de todos los nodos puede ser costoso desde el punto de vista computacional, las técnicas como la Estimación de contraste de ruido son especialmente útiles.
 
 ## Conclusión y lecturas adicionales.
+
+Si bien hemos analizado muchas técnicas e ideas en este artículo, el campo de Graph Neural Networks es extremadamente amplio. Nos hemos visto obligados a restringir nuestra discusión a un pequeño subconjunto de toda la literatura, sin dejar de comunicar las ideas clave y los principios de diseño detrás de las GNN. Recomendamos al lector interesado que eche un vistazo a una encuesta más completa.
+
+Terminamos con sugerencias y referencias para conceptos adicionales que podrían interesar a los lectores:
+
 ### GNNs en Práctica.
+Resulta que acomodar las diferentes estructuras de los gráficos a menudo es difícil de hacer de manera eficiente, pero aún podemos representar muchas ecuaciones de actualización de GNN utilizando productos de vectores de matriz dispersos (ya que, en general, la matriz de adyacencia es escasa para la mayoría de los conjuntos de datos de gráficos del mundo real). ) Por ejemplo, la variante GCN discutida aquí se puede representar como:
+
+![GNNpractice](https://user-images.githubusercontent.com/65386838/174019364-e6a3465c-0897-4190-83db-7495c169981a.PNG)
+
+La reestructuración de las ecuaciones de actualización de esta manera permite implementaciones vectorizadas eficientes de GNN en aceleradores como GPU.
+
+Las técnicas de regularización para redes neuronales estándar, como Dropout , se pueden aplicar de manera directa a los parámetros (por ejemplo, poner a cero filas enteras de W^(k) arriba). Sin embargo, existen técnicas específicas de gráficos, como DropEdge, que elimina los bordes completos al azar del gráfico, que también mejoran el rendimiento de muchos modelos GNN.
+
 ### Diferentes tipos de Grafos.
-### puesta en común
+
+Aquí, nos hemos centrado en gráficos no dirigidos, para evitar entrar en demasiados detalles innecesarios. Sin embargo, hay algunas variantes simples de convoluciones espaciales para:
+
+* Grafos dirigidos: agregados a través de entidades del vecindario y/o del vecindario.
+* Grafos temporales: agregados a través de características de nodos anteriores y/o futuras.
+* Grafos heterogéneos: aprenda diferentes funciones de agregación para cada tipo de nodo/borde.
+
+Existen técnicas más sofisticadas que pueden aprovechar las diferentes estructuras de estos gráficos: consulte para obtener más información.
+
+### puesta común
+
+Este artículo analiza cómo las GNN calculan representaciones útiles de nodos. Pero, ¿qué pasaría si quisiéramos calcular representaciones de gráficos para tareas a nivel de gráfico (por ejemplo, predecir la toxicidad de una molécula)?
+
+Una solución simple es simplemente agregar las incrustaciones de nodos finales y pasarlas a través de otra red neuronal PREDICT G:
+
 ![Pooling](https://user-images.githubusercontent.com/65386838/173962541-5b0aac1a-f602-4449-a818-a3a6940fb752.PNG)
+
+Sin embargo, existen técnicas más poderosas para 'agrupar' representaciones de nodos:
+
+SortPool: ordene los vértices del gráfico para obtener una representación invariable del orden de nodos de tamaño fijo del gráfico y luego aplique cualquier arquitectura de red neuronal estándar.
+DiffPool: aprenda a agrupar vértices, cree un gráfico más grueso sobre grupos en lugar de nodos, luego aplique un GNN sobre el gráfico más grueso. Repita hasta que solo quede un grupo.
+SAGPool: aplique un GNN para conocer las puntuaciones de los nodos, luego conserve solo los nodos con las puntuaciones más altas y deseche el resto. Repita hasta que solo quede un nodo.
 
 ## Referencias.
 * Texto de referencia tomado: (https://distill.pub/2021/understanding-gnns/)
