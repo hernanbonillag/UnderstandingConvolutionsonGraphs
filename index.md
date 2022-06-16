@@ -29,12 +29,27 @@ Para esto se va a considerar la tarea de predecir si una molécula química es t
 
 ![moleculas](https://user-images.githubusercontent.com/65386838/173958401-3b87fccd-e293-4ae3-90c6-40adcbbceb38.PNG)
 
+Las principales complicaciones que se pueden observar en la imagen anterior son las siguientes.
+* Las moléculas pueden tener diferente número de átomos.
+* Los átomos en una molécula pueden ser de diferentes tipos.
+* Cada uno de estos átomos puede tener diferente número de conexiones.
+* Estas conexiones pueden tener diferentes puntos fuertes.
+* La representación de gráficos en un formato que se pueda calcular no es trivial, y la representación final elegida a menudo depende significativamente del problema real.
+
 ### Equivarianza de orden del nodo
+
+Para esto tomaremos prestado de las redes neuronales convolucionales los terminos invarianza y equivarianza los cuales son más ocupados en ese tipo de arquitecturas, definiendo estas dos palabras como:  
+* La invarianza nos dice que la salida del modelo no es afectado por las transformaciones. 
+* La equivarianza permite que la salida sea afectada, pero de una manera controlada y útil.
+Por lo tanto si ampliamos el punto anterior se puede decir que los grafos a menudo no tienen un orden inherente presente entre los nodos.  si de compara esto con las imágenes, donde cada píxel está determinado únicamente por su posición absoluta dentro de la imagen, nos podemos dar una idea del problema.
 
 ![graphsDistill](https://user-images.githubusercontent.com/65386838/173960157-a0ecdbc3-b987-494c-804e-08e3671ac07f.PNG)
 
+Como resultado, nos gustaría que nuestros algoritmos fueran equivalentes al orden de los nodos: no deberían depender del orden de los nodos del grafo. Si permutamos los nodos de alguna manera, las representaciones resultantes de los nodos calculadas por nuestros algoritmos también deberían permutarse de la misma manera.
 
 ### Escalabilidad
+
+
 
 ## Resolución de problemas y notación.
 
