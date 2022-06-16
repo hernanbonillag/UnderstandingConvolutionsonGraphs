@@ -44,30 +44,54 @@ Ahora bien
 
 ![eq2](https://user-images.githubusercontent.com/65386838/173960742-a75e7b61-6c47-46b0-8848-e3bf2741ab84.PNG)
 ![Uploading Fixing.PNG…]()
-
+VIDEO
 
 #ChebNet
+
+![eqcheb](https://user-images.githubusercontent.com/65386838/173961575-d0611f9f-5371-4ddb-8c10-cea60eeb5851.PNG)
+![eqcheb2](https://user-images.githubusercontent.com/65386838/173961582-5eb0f1e4-2f5a-4778-a7b3-1fffec4c4e0c.PNG)
 
 
 #Los filtros polinómicos son equivalentes al orden de los nodos.
 
+video
+
 #Computación embebida.
+![embebida1](https://user-images.githubusercontent.com/65386838/173961623-ef20b755-533f-48a4-a009-409b0ef54ba3.PNG)
+
 
 ##Redes neuronales gráficas modernas
 
+![moderngraph](https://user-images.githubusercontent.com/65386838/173961653-84495082-e506-4b0d-bab5-399efbe58969.PNG)
+
+
 #Computación embebida.
+
+VIDEO
 
 ##Redes neuronales gráficas interactivas.
 
+video
+
 ##De circunvoluciones locales a globales.
 
+
+
 #Convoluciones espectrales.
-
+video
 #Representaciones espectrales de imágenes naturales.
-
+video
 #Computación embebida.
+![embebida3](https://user-images.githubusercontent.com/65386838/173962058-be9683f5-5ee7-4af8-8b24-6b2212593238.PNG)
+
+![embebida3-2](https://user-images.githubusercontent.com/65386838/173962069-e3c2c779-b43c-4535-a2b7-e53ce32625f2.PNG)
+
 
 #Las circunvoluciones espectrales son equivalentes al orden de los nodos.
+![Leq1](https://user-images.githubusercontent.com/65386838/173962358-d5b85127-d910-4173-9b4c-3c2356249e90.PNG)
+![Leq2](https://user-images.githubusercontent.com/65386838/173962364-688b11e0-b42e-464e-8c60-dc29a761709d.PNG)
+![Leq3](https://user-images.githubusercontent.com/65386838/173962371-3de4e2f9-2136-498e-a8f7-0b76a776c83b.PNG)
+![Leq4](https://user-images.githubusercontent.com/65386838/173962380-3f3b68a7-3313-42f4-a673-e4d879960eee.PNG)
 
 #Propagación global a través de grafos embebidos.
 
