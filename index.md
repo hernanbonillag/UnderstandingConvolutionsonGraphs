@@ -74,18 +74,18 @@ Definiremos un grafo G como un conjunto de nodos, V, con un conjunto de aristas 
 
 Para facilitar la exposición, supondremos que G no está dirigido y que todos los nodos son del mismo tipo. Este tipo de gráficos se denominan "homogéneos". Muchas de las mismas ideas que veremos aquí se aplican a otros tipos de gráficos: discutiremos esto más adelante en Diferentes tipos de gráficos.
 
-A veces necesitaremos denotar una propiedad de gráfico mediante una matriz M, donde cada fila M_v
+A veces necesitaremos denotar una propiedad de grafo mediante una matriz M, donde cada fila M_v
 
 representa una propiedad correspondiente a un vértice particular v.
 
 
-## Extendiendo circunvoluciones a grafos.
+## Extendiendo convoluciones a grafos.
 
 Ahora retomaremos el concepto de red neuronal Las redes neuronales convolucionales surgen del estudio de la corteza visual en gatos realizado por David H. Hubel y Torsten Wiesel. Estos autores demostraron que existen grupos de neuronas en la corteza visual que tienen un campo receptivo local. Un campo receptivo se define como una región limitada del espacio en la que un grupo de neuronas reaccionan en función a un estímulo. [2]
 Se puede ver el siguiente video como apoyo.
 <p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/mgaUjJ-430Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
-Se ha visto que las redes neuronales convolucionales son bastante poderosas para extraer características de las imágenes. Sin embargo, las imágenes en sí pueden verse como gráficos con una estructura similar a una cuadrícula muy regular, donde los píxeles individuales son nodos y los valores del canal RGB en cada píxel son las características del nodo.
+Se ha visto que las redes neuronales convolucionales son bastante poderosas para extraer características de las imágenes. Sin embargo, las imágenes en sí pueden verse como grafos con una estructura similar a una cuadrícula muy regular, donde los píxeles individuales son nodos y los valores del canal RGB en cada píxel son las características del nodo.
 
 Una idea natural, entonces, es considerar la generalización de convoluciones a grafos arbitrarios. Sin embargo, recuerde los desafíos enumerados en la sección anterior: en particular, las circunvoluciones ordinarias no son invariantes en el orden de los nodos, ya que dependen de las posiciones absolutas de los píxeles. Inicialmente, no está claro cómo generalizar convoluciones sobre cuadrículas a convoluciones sobre gráficos generales, donde la estructura de vecindad difiere de un nodo a otro. El lector curioso puede preguntarse si se podría realizar algún tipo de relleno y ordenamiento para garantizar la consistencia de la estructura de vecindad entre los nodos. Esto se ha intentado con cierto éxito, pero las técnicas que veremos aquí son más generales y poderosas.
 
@@ -182,12 +182,9 @@ video
 ![Pooling](https://user-images.githubusercontent.com/65386838/173962541-5b0aac1a-f602-4449-a818-a3a6940fb752.PNG)
 
 ## Referencias.
+Texto de referencia tomado: (https://distill.pub/2021/understanding-gnns/)
+[1] Zhou, J., Cui, G., Hu, S., Zhang, Z., Yang, C., Liu, Z., ... & Sun, M. (2020). Graph neural networks: A review of methods and applications. AI Open, 1, 57-81.
+[2] Cicero, I. E. (2018). Utilización de redes neuronales convoluciones para la detección de tipos de imágenes.
 
-
-
-```markdown
-Ejemplo de código en markdown
-
-```
 
 
