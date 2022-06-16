@@ -10,7 +10,10 @@ Ahora que tenemos la noción acerca de lo que es un grafo podemos empezar a expl
 
 ## Redes Neuronales Gráficas o en Grafos(GNN)
 En este punto es dónde entran las redes neuronales gráficas las cuales se destacan porque pueden manejarse bien o operar de cierta forma con este tipo de datos estructurados al extraer y utilizar características del grafo subyacente.
-Ahora bien 
+Ahora bien.
+Empezareos por definir que son las Redes Neuronales Gráficas o de Grafo, estás manejan entradas en una estructura de datos como son vectores, matrices o tensores, entonces estas aprovechas que  los dominios complejos al tener una rica estructura relacional, que se puede representar como un gráfico relacional, podemos obtener al modelar explícitamente las relaciones un mejor desempeño.
+
+Lo que hace la gran diferencia entre este tipo de redes neuronales y las "típica" por llamarlas de alguna forma es que al trabajar con este tipo de estructura no solo se analiza un número o información aíslada, si no que tambien se trabaja con las relaciones entre estos.
 
 ## Los desafíos de la computación en grafos.
 <p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/X75vNB7lSGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
