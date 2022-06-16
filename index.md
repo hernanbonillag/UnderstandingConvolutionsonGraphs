@@ -13,6 +13,7 @@ En este punto es dónde entran las redes neuronales gráficas las cuales se dest
 Ahora bien 
 
 ## Los desafíos de la computación en grafos.
+<p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/X75vNB7lSGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 ### Falta de estructura consistente
 
 ![moleculas](https://user-images.githubusercontent.com/65386838/173958401-3b87fccd-e293-4ae3-90c6-40adcbbceb38.PNG)
