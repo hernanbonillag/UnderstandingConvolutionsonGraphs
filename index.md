@@ -201,17 +201,26 @@ El paso de mensajes forma la columna vertebral de muchas arquitecturas GNN en la
 - Gráfico de muestra y agregado (GraphSAGE)
 - Red de isomorfismo gráfico (GIN)
 
+##Pensamientos
+
+Un punto interesante es evaluar diferentes funciones de agregación: ¿son algunas mejores y otras peores? demuestra que las funciones de agregación de hecho se pueden comparar en qué tan bien pueden preservar de manera única las características de la vecindad del nodo; recomendamos al lector interesado echar un vistazo al análisis teórico detallado allí.
+
+Aquí, hemos hablado de GNN donde el cálculo solo ocurre en los nodos. Los modelos GNN más recientes, como las redes neuronales de paso de mensajes y las redes gráficas, también realizan cálculos en los bordes; calculan incrustaciones de borde junto con incrustaciones de nodos. Este es un marco aún más general, pero se aplican las mismas ideas de "transmisión de mensajes" de esta sección.
+
 ## Redes neuronales gráficas interactivas.
 
 video
 
 ## De convoluciones locales a globales.
 
+Los métodos que hemos visto hasta ahora realizan convoluciones 'locales': la característica de cada nodo se actualiza utilizando una función de las características de sus vecinos locales.
 
+Si bien realizar suficientes pasos de paso de mensajes eventualmente garantizará que se pase la información de todos los nodos en el gráfico, uno puede preguntarse si hay formas más directas de realizar convoluciones "globales".
 
-### Convoluciones espectrales.
-video
-### Representaciones espectrales de imágenes naturales.
+La respuesta es sí; ahora describiremos un enfoque que en realidad fue presentado por primera vez en el contexto de las redes neuronales por , mucho antes que cualquiera de los modelos GNN que analizamos anteriormente.
+
+###Convoluciones Espectrales
+## Representaciones espectrales de imágenes naturales.
 <p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/IVrypFvNxFA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 ### Computación embebida.
 Ahora tenemos los antecedentes para comprender las convoluciones espectrales y cómo se pueden usar para calcular incrustaciones/representaciones de características de nodos.
