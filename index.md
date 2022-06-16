@@ -89,7 +89,7 @@ video
 ### Convoluciones espectrales.
 video
 ### Representaciones espectrales de imágenes naturales.
-<p align"center"><iframe width="560" height="315" src="https://www.youtube.com/embed/IVrypFvNxFA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/IVrypFvNxFA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 ### Computación embebida.
 Ahora tenemos los antecedentes para comprender las convoluciones espectrales y cómo se pueden usar para calcular incrustaciones/representaciones de características de nodos.
 
