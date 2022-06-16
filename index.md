@@ -63,7 +63,11 @@ Hay muchos problemas útiles que se pueden formular sobre gráficos:
 * __Predicción de enlaces__ : predicción de enlaces perdidos.
 * __Maximización de influencia__ : identificación de nodos influyentes.
 ![part1Graph](https://user-images.githubusercontent.com/65386838/173960290-a19e17bb-050b-47f1-a0e2-701a30f46012.PNG)
+
+
 ![part2Graph](https://user-images.githubusercontent.com/65386838/173960295-4bd026b0-5c86-449c-907f-3eaccd853376.PNG)
+
+
 
 Un precursor común para resolver muchos de estos problemas es el aprendizaje de representación de nodos: aprender a asignar nodos individuales a vectores de valores reales de tamaño fijo (llamados "representaciones" o "incrustaciones").
 
@@ -167,8 +171,27 @@ Tenga en cuenta que estas redes reutilizan los mismos pesos de filtro en diferen
 
 ## Redes neuronales gráficas modernas
 
+ChebNet fue un gran avance en el aprendizaje de filtros localizados sobre gráficos y motivó a muchos a pensar en las convoluciones de gráficos desde una perspectiva diferente.
+
+Volvemos al resultado de convolucionar x por el núcleo polinomial p_w(L) =L, centrándonos en un vértice particular v:
+
+
+
 ![moderngraph](https://user-images.githubusercontent.com/65386838/173961653-84495082-e506-4b0d-bab5-399efbe58969.PNG)
 
+
+Como señalamos antes, esta es una convolución localizada de 1-salto. Pero lo que es más importante, podemos pensar en esta convolución como resultado de dos pasos:
+
+-Agregar sobre características vecinas inmediatas x_u
+-Combinando con la característica propia del nodo x_v.
+
+_Idea clave__: ¿Qué pasa si consideramos diferentes tipos de pasos de 'agregación' y 'combinación', más allá de lo que es posible usando filtros polinómicos?
+
+Al garantizar que la agregación sea equivariante en el orden de los nodos, la convolución general se vuelve equivariante en el orden de los nodos.
+
+Estas circunvoluciones pueden considerarse como "paso de mensajes" entre nodos adyacentes: después de cada paso, cada nodo recibe alguna "información" de sus vecinos.
+
+Al repetir iterativamente las circunvoluciones localizadas de 1-salto K veces (es decir, "pasar mensajes" repetidamente), el campo receptivo de la convolución incluye efectivamente todos los nodos hasta K-saltos de distancia.
 
 ### Computación embebida.
 El paso de mensajes forma la columna vertebral de muchas arquitecturas GNN en la actualidad. Describimos los más populares en profundidad a continuación:
@@ -177,8 +200,6 @@ El paso de mensajes forma la columna vertebral de muchas arquitecturas GNN en la
 - Redes de Atención Grafica (GAT)
 - Gráfico de muestra y agregado (GraphSAGE)
 - Red de isomorfismo gráfico (GIN)
-
-VIDEO
 
 ## Redes neuronales gráficas interactivas.
 
